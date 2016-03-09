@@ -10,7 +10,7 @@
     }
   }
 
-  this.getValue = function() {
+  Medida.getValue = function() {
     console.log("Medida getVal = " + this.valor);
     return this.valor;
   };
