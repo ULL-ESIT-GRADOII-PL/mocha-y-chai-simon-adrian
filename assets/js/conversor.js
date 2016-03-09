@@ -1,10 +1,10 @@
 (function(exports) {
     "use strict";
 
-    function Medida(valor, tipo) {
+//    function Medida(valor, tipo) {
         /* tipo es opcional. Debería admitir  new Medida("45.2 Km") */
         /* ademas de new Medida(45.2, "Km") */
-        if (tipo === null) {
+/*        if (tipo === null) {
             console.log(valor);
         } else {
             this.valor = valor;
@@ -16,7 +16,7 @@
         console.log("Medida getVal = " + this.valor);
         return this.valor;
     };
-
+*/
     function Longitud(valor, tipo) {
         Medida.call(this, valor, tipo);
     }
@@ -69,7 +69,7 @@
         return this.valor;
     };
 
-    exports.Medida = Medida;
+    //exports.Medida = Medida;
     exports.Longitud = Longitud;
     exports.Metro = Metro;
     exports.Yarda = Yarda;
