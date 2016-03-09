@@ -1,6 +1,7 @@
 (function(exports) {
     "use strict";
 
+    // Clase padre de la práctica.
     function Medida(valor, tipo) {
         /* tipo es opcional. Debería admitir  new Medida("45.2 Km") */
         /* ademas de new Medida(45.2, "Km") */
@@ -12,27 +13,42 @@
         }
     }
 
+    // Metodos getter para los atributos de la clase.
     Medida.prototype.getValor = function() {
         console.log("Medida getVal = " + this.valor);
         return this.valor;
     };
+    Medida.prototype.getTipo = function() {
+      return this.tipo;
+    };
 
-    exports.Temperatura = Temperatura;
-    exports.Longitud = Longitud;
-    exports.Celsius = Celsius;
-    exports.Farenheit = Farenheit;
-    exports.Kelvin = Kelvin;
-    exports.Metro = Metro;
-    exports.Yarda = Yarda;
-    exports.Pulgada = Pulgada;
+
+    // Control de flujo de entrada
+    /* jshint multistr: true */
+    Medida.REGEXP = XRegExp('^(?<valor>[+-]?\\d+(\\.\\d+)?([e][+-]?\\d+)?[ ]*) # valor  \n\
+                              (?<tipo>[a-z]+)                                  # tipo   \n\
+                              (?<to>[ ]+(?:to[ ]+)?)                           #to \n\
+                              (?<tipo2>[a-z]+)[ ]*$                            #tipo2', 'xi');
+
+    Medida.match = function(valor) {
+      return XRegExp.exec(valor, REGEXP);
+    };
+
+    Medida.measures = function() {
+      return {
+        'c': Celsius,
+        'f': Farenheit,
+        'k': Kelvin,
+        'm': Metro,
+        'p': Pulgada,
+        'y': Yarda
+      };
+    };
 
     exports.convertir = function() {
         var valor = document.getElementById('convert').value;
         var elemento = document.getElementById('converted');
-        var cadena = XRegExp('^(?<valor>[+-]?\\d+(\\.\\d+)?([e][+-]?\\d+)?[ ]*) # valor  \n\
-                    (?<tipo>[a-z]+)                                             # tipo   \n\
-                    (?<to>[ ]+(?:to[ ]+)?)                                      #to \n\
-                    (?<tipo2>[a-z]+)[ ]*$                                       #tipo2', 'xi');
+
         var match = XRegExp.exec(valor, cadena);
         console.log(match);
         if (match === null) {
