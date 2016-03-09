@@ -1,68 +1,48 @@
 (function(exports) {
-  "use strict";
+  "use strict;"
 
-  // Clase Longitud, padre de los distintos tipos de medida de longitud.
   function Longitud(valor, tipo) {
     Medida.call(this, valor, tipo);
+
+    this.toPulgadas = function() {
+      var result;
+      var tipo = this.getType().toLowerCase();
+      if ("metros".match(tipo))
+        result = this.getValue() * 39.37;
+      else
+        result = this.getValue();
+      return new Pulgadas(result);
+    };
+    this.toMetros = function() {
+      var result;
+      var tipo = this.getType().toLowerCase();
+      if ("pulgadas".match(tipo))
+        result = this.getValue() / 39.37;
+      else
+        result = this.getValue();
+      return new Metros(result);
+    };
   }
-  Longitud.prototype = new Medida("32 m");
+
+  Longitud.prototype = new Medida();
   Longitud.prototype.constructor = Longitud;
 
-  // Clase Metro
-  function Metro(valor) {
-      Longitud.call(this, valor, "M");
+  function Metros(valor) {
+    Longitud.call(this, valor, "Metros");
   }
-  Metro.prototype = new Longitud("32 m");
-  Metro.prototype.constructor = Longitud;
 
-  // Metodos de conversión
-  Metro.prototype.toYarda = function() {
-      this.valor = (this.valor / 0.9144);
-      return this.valor;
-  };
-  Metro.prototype.toPulgada = function() {
-      this.valor = (this.valor * 39.3701);
-      return this.valor;
-  };
+  Metros.prototype = new Longitud();
+  Metros.prototype.constructor = Metros;
 
-  // Clase Pulgada
-  function Pulgada(valor) {
-      Longitud.call(this, valor, "P");
+  function Pulgadas(valor) {
+    Longitud.call(this, valor, "Pulgadas");
   }
-  Pulgada.prototype = new Longitud("32 P");
-  Pulgada.prototype.constructor = Longitud;
 
-  // Metodos de conversion
-  Pulgada.prototype.toMetro = function() {
-      this.valor = (this.valor / 39.3701);
-      return this.valor;
-  };
-  Pulgada.prototype.toYarda = function() {
-      this.valor = (this.valor / 36);
-      return this.valor;
-  };
+  Pulgadas.prototype = new Longitud();
+  Pulgadas.prototype.constructor = Pulgadas;
 
-  // Clase Yarda
-  function Yarda(valor) {
-      Longitud.call(this, valor, "Y");
-  }
-  Yarda.prototype = new Longitud("32 Y");
-  Yarda.prototype.constructor = Longitud;
-
-  // Metodos de conversion
-  Yarda.prototype.toMetro = function() {
-      this.valor = (this.valor * 0.9144);
-      return this.valor;
-  };
-  Yarda.prototype.toPulgada = function() {
-      this.valor = (this.valor * 36);
-      return this.valor;
-  };
-
-  // Exports de cada clase
   exports.Longitud = Longitud;
-  exports.Metro = Metro;
-  exports.Pulgada = Pulgada;
-  exports.Yarda = Yarda;
+  exports.Metros = Metros;
+  exports.Pulgadas = Pulgadas;
 
 })(this);
