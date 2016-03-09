@@ -62,5 +62,9 @@
         return this.valor;
     };
 
+    exports.Temperatura = Temperatura;
+    exports.Celsius = Celsius;
+    exports.Farenheit = Farenheit;
+    exports.Kelvin = Kelvin;
 
 })(this);

@@ -69,11 +69,7 @@
         return this.valor;
     };
 
-    exports.Temperatura = Temperatura;
     exports.Longitud = Longitud;
-    exports.Celsius = Celsius;
-    exports.Farenheit = Farenheit;
-    exports.Kelvin = Kelvin;
     exports.Metro = Metro;
     exports.Yarda = Yarda;
     exports.Pulgada = Pulgada;
