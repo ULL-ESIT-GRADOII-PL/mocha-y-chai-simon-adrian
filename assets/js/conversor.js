@@ -69,6 +69,7 @@
         return this.valor;
     };
 
+    exports.Medida = Medida;
     exports.Longitud = Longitud;
     exports.Metro = Metro;
     exports.Yarda = Yarda;
