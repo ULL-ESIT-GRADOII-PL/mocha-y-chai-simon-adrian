@@ -16,49 +16,24 @@ describe("Medida", function() {
     });
   });
 
-  describe("#toString()", function() {
-    it("Debería devolver una cadena literal que represente al objeto", function() {
+  describe("toString()", function() {
+    it("Debería devolver un string con la representación del objeto", function() {
       var string = (new Medida("33k")).toString();
       expect(string).to.equal("33.00 k");
     });
   });
-
-  describe("Medida#match()", function() {
-    it("Debería casar la cadena con la expresión regular REGEXP de la clase Medida", function() {
-      var match = Medida.match("32.5e10 K to C");
-      expect(match.numero).to.equal("32.5e10");
-      expect(match.tipo).to.equal("K");
-      expect(match.nuevo_tipo).to.equal("C");
-    });
-  });
-
-  describe("Medida#measures()", function() {
-    it("Debería devolver una tabla hash con los valores reconocidos por el conversor", function() {
-      var measures = Medida.measures();
-      expect(measures['f']).to.equal(Fahrenheit);
-      expect(measures['c']).to.equal(Celsius);
-      expect(measures['k']).to.equal(Kelvin);
-    });
-  });
-
-  describe("Medida#convertir()", function() {
-    it("Debería devolver la conversión especificada", function() {
+  describe("Conversion", function() {
+    it("Debería devolver el elemento convertido", function() {
       var valor = "32.5e10 C to K",
         elemento = document.createElement("DIV"),
         convertir = Medida.convertir(valor, elemento);
       expect(convertir.toString()).to.equal("325000000273.15 Kelvin");
     });
-    it("Debería devolver un error por desconocer como convertir de Celsius a Metros", function() {
+    it("Debería dar error de conversion al no saber realizarla", function() {
       var valor = "32.5e10 C to m",
         elemento = document.createElement("DIV"),
         convertir = Medida.convertir(valor, elemento);
       expect(convertir.toString()).to.equal('ERROR. Introduzca una medida y conversión válida. Desconozco como convertir desde "c" hasta "m"');
-    });
-    it("Debería devolver un error por introducir una conversión no válida", function() {
-      var valor = "32.5e10 C a K",
-        elemento = document.createElement("DIV"),
-        convertir = Medida.convertir(valor, elemento);
-      expect(convertir.toString()).to.equal("ERROR. Introduzca una conversión válida, por ejemplo: 32.5e10 F to K");
     });
   });
 });
