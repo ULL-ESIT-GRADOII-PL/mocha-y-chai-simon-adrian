@@ -5,8 +5,8 @@ Este repositorio aloja la práctica de conversión de tipos, realizada con html,
 
 **Página de la práctica**
 
-* [Web](http://ull-esit-gradoii-pl.github.io/eliminacion-del-switch-simon-adrian/)
-* [Descripción Campus](https://campusvirtual.ull.es/1516/mod/page/view.php?id=177984)
+* [Web](http://ull-esit-gradoii-pl.github.io/mocha-y-chai-simon-adrian/)
+* [Descripción Campus](https://campusvirtual.ull.es/1516/mod/page/view.php?id=182932)
 
 **Página del autor**
 
